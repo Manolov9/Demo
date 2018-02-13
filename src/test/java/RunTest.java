@@ -16,6 +16,4 @@ public class RunTest {
 }
 
 
-
-
-//  !!!  "Check the price of the book Monday 25.07 is the same, if not will give an error. "
+//  Embodee Embodee Embodee!!!  "Check the price of the book Monday 25.07 is the same, if not will give an error. "
