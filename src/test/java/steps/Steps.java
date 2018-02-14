@@ -1,24 +1,17 @@
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.Select;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.fail;
 
 
 public class Steps {
@@ -29,19 +22,20 @@ public class Steps {
     private WebDriver driver;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+
     @Before
     public void setUp() throws Exception {
 
-       driver = new FirefoxDriver();
-        //System.setProperty("webdriver.gecko.driver", "<D:\\SELENIUM\\geckodriver.exe>");
-    }
+        //System.setProperty("webdriver.gecko.driver","C:\\webdrivers\\geckodriver.exe");
+        driver = new FirefoxDriver();
 
+    }
 
 
     @Given("^: Add book test in amazon$")
     public void Amazon_Book() throws Exception {
         driver.get("http://dev.embodee.com/gbuilder/index.html?garment=881257&rules=temp");
-    Assert.assertEquals("Text", driver.findElement(By.id("Text")).getText());
+        Assert.assertEquals("Text", driver.findElement(By.id("Text")).getText());
 
         driver.findElement(By.id("Text")).click();
 
@@ -86,6 +80,7 @@ public class Steps {
 
 
     }
+
     @After
     public void tearDown() throws Exception {
         driver.quit();
