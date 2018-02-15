@@ -8,16 +8,17 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 
 public class Steps {
-    //public static final String USERNAME = "ilianavajarova1";
-    //public static final String AUTOMATE_KEY = "anQesbpRtAnE2aYhxQxd";
-    //public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
     private WebDriver driver;
     private boolean acceptNextAlert = true;
@@ -28,49 +29,74 @@ public class Steps {
 
         //System.setProperty("webdriver.gecko.driver","C:\\webdrivers\\geckodriver.exe");
         driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
 
 
     @Given("^: Add book test in amazon$")
     public void Amazon_Book() throws Exception {
-        driver.get("http://dev.embodee.com/gbuilder/index.html?garment=881257&rules=temp");
-        Assert.assertEquals("Text", driver.findElement(By.id("Text")).getText());
+        driver.get("http://dev.embodee.com/gcomposer");
+        driver.findElement(By.name("user")).click();
+        driver.findElement(By.name("user")).clear();
+        driver.findElement(By.name("user")).sendKeys("lucho");
+        driver.findElement(By.name("pass")).click();
+        driver.findElement(By.name("pass")).clear();
+        driver.findElement(By.name("pass")).sendKeys("@ccess4Lucho!");
+        driver.findElement(By.cssSelector("input.form-control.btn.btn-default")).click();
+        driver.get("http://dev.embodee.com/gcomposer/svgmasks/747226");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[@state='enabled']")).click();
 
-        driver.findElement(By.id("Text")).click();
+        for (int second = 0; ; second++) {
+            if (second >= 60) fail("timeout");
+            try {
+                if (isElementPresent(By.xpath("//button[@state='enabled']"))) break;
+            } catch (Exception e) {
+            }
+            Thread.sleep(2000);
+        }
 
-        TimeUnit.SECONDS.sleep(10);
+        acceptNextAlert = true;
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[contains(@id, 'svg-mask-save')]")).click();
+        //assertTrue(closeAlertAndGetItsText().matches("^Save masks to the default UD[\\s\\S]$"));
+
+
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+
+        } catch (NoAlertPresentException e) {
+            Thread.sleep(2000);
+        }
+        Thread.sleep(2000);
+
+        Alert alert2 = driver.switchTo().alert();
+        Thread.sleep(1000);
+        alert2.accept();
+
+        Thread.sleep(3000);
+
     }
 
 
     @When("^: Verify book steps in amazon$")
     public void Verify_Steps() throws Exception {
-        driver.findElement(By.id("hlb-view-cart-announce")).click();
-        try {
-            Assert.assertEquals("A Game of Thrones (A Song of Ice and Fire, Book 1)", driver.findElement(By.xpath("//form[@id='activeCartViewForm']/div[2]/div/div[4]/div[2]/div/div/div/div[2]/ul/li/span/a/span")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            Assert.assertEquals("Paperback", driver.findElement(By.xpath("//form[@id='activeCartViewForm']/div[2]/div/div[4]/div[2]/div/div/div/div[2]/ul/li[2]/span/span")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            Assert.assertEquals("£3.85", driver.findElement(By.xpath("//form[@id='activeCartViewForm']/div[2]/div/div[4]/div[2]/div[2]/p/span")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            Assert.assertEquals("Quantity", driver.findElement(By.xpath("//form[@id='activeCartViewForm']/div/div/div[3]/span")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        try {
-            Assert.assertEquals("1", driver.findElement(By.id("a-autoid-2-announce")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
+
+        /*WebElement dropdown = driver.findElement(By.id("combo-gender"));
+
+        List<WebElement> options = dropdown.findElements(By.tagName("option"));
+
+        for (WebElement option : options) {
+            if("Men Soccer".equals(option.getText()))
+                option.click();
+        }*/
+
+        new Select(driver.findElement(By.id("combo-gender"))).selectByVisibleText("Men Soccer");
+        new Select(driver.findElement(By.id("combo-type"))).selectByVisibleText("bottom");
+        new Select(driver.findElement(By.id("combo-product-id"))).selectByVisibleText("728955");
 
     }
 
@@ -78,16 +104,15 @@ public class Steps {
     @Then("^: Complete test verify add book basket$")
     public void AddBasket_Verify() throws Exception {
 
+        driver.findElement(By.linkText("Admin")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.linkText("Sign Out")).click();
 
     }
 
     @After
     public void tearDown() throws Exception {
         driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
     }
 
     private boolean isElementPresent(By by) {
@@ -99,28 +124,5 @@ public class Steps {
         }
     }
 
-    private boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
 
-    private String closeAlertAndGetItsText() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            if (acceptNextAlert) {
-                alert.accept();
-            } else {
-                alert.dismiss();
-            }
-            return alertText;
-        } finally {
-            acceptNextAlert = true;
-        }
-    }
 }
-
