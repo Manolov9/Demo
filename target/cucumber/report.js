@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 2805994930,
+  "duration": 2748202575,
   "status": "passed"
 });
 formatter.scenario({
@@ -43,25 +43,25 @@ formatter.match({
   "location": "Steps.Amazon_Book()"
 });
 formatter.result({
-  "duration": 15132383180,
+  "duration": 15569447740,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.Verify_Steps()"
 });
 formatter.result({
-  "duration": 686952941,
+  "duration": 658243483,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.AddBasket_Verify()"
 });
 formatter.result({
-  "duration": 3613055704,
+  "duration": 8573685056,
   "status": "passed"
 });
 formatter.after({
-  "duration": 235334499,
+  "duration": 277347646,
   "status": "passed"
 });
 });
