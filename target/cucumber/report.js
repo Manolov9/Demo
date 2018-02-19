@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 2858692447,
+  "duration": 3412790516,
   "status": "passed"
 });
 formatter.scenario({
@@ -53,29 +53,29 @@ formatter.match({
   "location": "DevSVG2.Navigate_to_svg_masks(String)"
 });
 formatter.result({
-  "duration": 11351162263,
+  "duration": 12425512345,
   "status": "passed"
 });
 formatter.match({
   "location": "DevSVG2.Verify_generate_and_save_masks()"
 });
 formatter.result({
-  "duration": 11512439380,
+  "duration": 11395943084,
   "status": "passed"
 });
 formatter.match({
   "location": "DevSVG2.Log_out()"
 });
 formatter.result({
-  "duration": 5478146459,
+  "duration": 5650342156,
   "status": "passed"
 });
 formatter.after({
-  "duration": 234677809,
+  "duration": 315566249,
   "status": "passed"
 });
 formatter.before({
-  "duration": 2254550264,
+  "duration": 2686271344,
   "status": "passed"
 });
 formatter.scenario({
@@ -117,29 +117,29 @@ formatter.match({
   "location": "DevSVG2.Navigate_to_svg_masks(String)"
 });
 formatter.result({
-  "duration": 11135554367,
+  "duration": 11684021625,
   "status": "passed"
 });
 formatter.match({
   "location": "DevSVG2.Verify_generate_and_save_masks()"
 });
 formatter.result({
-  "duration": 11403079498,
+  "duration": 11408662544,
   "status": "passed"
 });
 formatter.match({
   "location": "DevSVG2.Log_out()"
 });
 formatter.result({
-  "duration": 5504408842,
+  "duration": 5467491972,
   "status": "passed"
 });
 formatter.after({
-  "duration": 246593939,
+  "duration": 341785208,
   "status": "passed"
 });
 formatter.before({
-  "duration": 2245291242,
+  "duration": 2693919758,
   "status": "passed"
 });
 formatter.scenario({
@@ -181,25 +181,25 @@ formatter.match({
   "location": "DevSVG2.Navigate_to_svg_masks(String)"
 });
 formatter.result({
-  "duration": 11258805742,
+  "duration": 11102684544,
   "status": "passed"
 });
 formatter.match({
   "location": "DevSVG2.Verify_generate_and_save_masks()"
 });
 formatter.result({
-  "duration": 14753995038,
+  "duration": 14073536094,
   "status": "passed"
 });
 formatter.match({
   "location": "DevSVG2.Log_out()"
 });
 formatter.result({
-  "duration": 5665508714,
+  "duration": 5586883414,
   "status": "passed"
 });
 formatter.after({
-  "duration": 220269974,
+  "duration": 290990663,
   "status": "passed"
 });
 });
