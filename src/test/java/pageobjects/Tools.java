@@ -25,7 +25,7 @@ public class Tools {
     private void buildDriver() {
         webDriver = new ChromeDriver();
 
-        //webDriver = new FirefoxDriver(); //
+        //webDriver = new FirefoxDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //webDriver.get("http://dev.embodee.com/gcomposer");
