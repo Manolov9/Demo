@@ -33,7 +33,7 @@ public class DevSVG2 {
     @Given("^Navigate to svg masks \"(.*?)\"$")
     public void Navigate_to_svg_masks(String URL) throws Exception {
         pageObjects.getWebDriver().get("http://dev.embodee.com/gcomposer"); //WebDriver.get("http://dev.embodee.com/gcomposer");
-        pageObjects.credentials("lucho", "@ccess4Lucho!");
+        pageObjects.credentials("lucho", "XXXXXXXX");
         pageObjects.login();
         pageObjects.getWebDriver().get(URL);
         Thread.sleep(2000);

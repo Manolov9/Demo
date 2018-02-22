@@ -20,4 +20,3 @@ Feature: Open gComposer and navigate SVG Masks
     Given  Navigate to svg masks "http://dev.embodee.com/gcomposer/svgmasks/747222"
     When  Verify generate and save masks
     Then  Log out
-
